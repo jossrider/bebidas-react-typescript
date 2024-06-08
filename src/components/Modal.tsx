@@ -7,9 +7,7 @@ export default function Modal() {
   const modal = useAppStore((state) => state.modal)
   const closeModal = useAppStore((state) => state.closeModal)
   const selectedRecipe = useAppStore((state) => state.selectedRecipe)
-  const handleClickFavorites = useAppStore(
-    (state) => state.handleClickFavorites
-  )
+  const handleClickFavorites = useAppStore((state) => state.handleClickFavorites)
   const favoriteExists = useAppStore((state) => state.favoriteExists)
 
   const renderIngredients = () => {
@@ -64,15 +62,11 @@ export default function Modal() {
                     alt={`Imagen de ${selectedRecipe.strDrink}`}
                     className='mx-auto w-96'
                   />
-                  <Dialog.Title
-                    as='h3'
-                    className='text-gray-900 text-2xl font-extrabold my-5'>
+                  <Dialog.Title as='h3' className='text-gray-900 text-2xl font-extrabold my-5'>
                     Ingredientes y Cantidades
                   </Dialog.Title>
                   {renderIngredients()}
-                  <Dialog.Title
-                    as='h3'
-                    className='text-gray-900 text-2xl font-extrabold my-5'>
+                  <Dialog.Title as='h3' className='text-gray-900 text-2xl font-extrabold my-5'>
                     Instrucciones
                   </Dialog.Title>
                   <p className='text-lg '>{selectedRecipe.strInstructions}</p>
@@ -86,12 +80,7 @@ export default function Modal() {
                     <button
                       type='button'
                       className='w-full rounded bg-orange-600 p-3 font-bold uppercase text-white shadow hover:bg-orange-500'
-                      onClick={() => {
-                        {
-                          handleClickFavorites(selectedRecipe)
-                          closeModal()
-                        }
-                      }}>
+                      onClick={() => handleClickFavorites(selectedRecipe)}>
                       {favoriteExists(selectedRecipe.idDrink)
                         ? "Eliminar Favorito"
                         : "Agregar a Favoritos"}

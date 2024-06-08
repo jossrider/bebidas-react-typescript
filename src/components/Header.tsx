@@ -12,14 +12,13 @@ export default function Header() {
   const fetchCategories = useAppStore((state) => state.fetchCategories)
   const categories = useAppStore((state) => state.categories)
   const searchRecipes = useAppStore((state) => state.searchRecipes)
+  const showNotificacion = useAppStore((state) => state.showNotificacion)
 
   useEffect(() => {
     fetchCategories()
   }, [fetchCategories])
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>
-  ) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
     setSearchFilters({
       ...searchFilters,
       [e.target.name]: [e.target.value],
@@ -28,17 +27,19 @@ export default function Header() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // Validar
+
     if (Object.values(searchFilters).includes("")) {
-      console.log("Todos los campos son obligatorios!!")
+      showNotificacion({
+        text: "Todos los campos son obligatorios!!",
+        error:true
+      })
       return
     }
     // Consultar las recetas
     searchRecipes(searchFilters)
   }
   return (
-    <header
-      className={isHome ? "bg-header bg-center bg-cover" : "bg-slate-800"}>
+    <header className={isHome ? "bg-header bg-center bg-cover" : "bg-slate-800"}>
       <div className='mx-auto container px-5 py-16'>
         <div className='flex justify-between items-center'>
           <div>
@@ -48,18 +49,14 @@ export default function Header() {
             <NavLink
               to='/'
               className={({ isActive }) =>
-                isActive
-                  ? "text-orange-500 uppercase font-bold"
-                  : "text-white uppercase font-bold"
+                isActive ? "text-orange-500 uppercase font-bold" : "text-white uppercase font-bold"
               }>
               Inicio
             </NavLink>
             <NavLink
               to='/favoritos'
               className={({ isActive }) =>
-                isActive
-                  ? "text-orange-500 uppercase font-bold"
-                  : "text-white uppercase font-bold"
+                isActive ? "text-orange-500 uppercase font-bold" : "text-white uppercase font-bold"
               }>
               Favoritos
             </NavLink>

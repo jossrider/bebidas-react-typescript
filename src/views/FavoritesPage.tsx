@@ -1,6 +1,6 @@
-import DrinkCard from "../components/DrinkCard"
-import { useAppStore } from "../stores/useAppStore"
-import { useMemo } from "react"
+import DrinkCard from '../components/DrinkCard'
+import { useAppStore } from '../stores/useAppStore'
+import { useMemo } from 'react'
 
 export default function Favoritespage() {
   const favorites = useAppStore((state) => state.favorites)
@@ -16,9 +16,7 @@ export default function Favoritespage() {
           ))}
         </div>
       ) : (
-        <p className='my-10 text-center text-2xl'>
-          Los favoritos se mostrarán aquí
-        </p>
+        <p className='my-10 text-center text-2xl'>Los favoritos se mostrarán aquí</p>
       )}
     </>
   )

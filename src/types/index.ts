@@ -1,11 +1,11 @@
-import { z } from "zod"
+import { z } from 'zod'
 import {
   CategoriesAPIResponseSchema,
   DrinkAPIResponse,
   DrinksAPIResponse,
   RecipeAPIResponseSchema,
   SearchFilterSchema,
-} from "../utils/recipes-schema"
+} from '../utils/recipes-schema'
 
 export type Categories = z.infer<typeof CategoriesAPIResponseSchema>
 export type SearchFilter = z.infer<typeof SearchFilterSchema>

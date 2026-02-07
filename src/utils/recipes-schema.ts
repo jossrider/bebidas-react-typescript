@@ -1,10 +1,10 @@
-import { z } from "zod"
+import { z } from 'zod'
 
 export const CategoriesAPIResponseSchema = z.object({
   drinks: z.array(
     z.object({
       strCategory: z.string(),
-    })
+    }),
   ),
 })
 
@@ -40,4 +40,4 @@ export const RecipeAPIResponseSchema = z.object({
   strMeasure4: z.string().nullable(),
   strMeasure5: z.string().nullable(),
   strMeasure6: z.string().nullable(),
-});
+})

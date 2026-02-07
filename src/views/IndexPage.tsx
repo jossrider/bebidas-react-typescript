@@ -1,6 +1,6 @@
-import { useMemo } from "react"
-import { useAppStore } from "../stores/useAppStore"
-import DrinkCard from "../components/DrinkCard"
+import { useMemo } from 'react'
+import { useAppStore } from '../stores/useAppStore'
+import DrinkCard from '../components/DrinkCard'
 export default function indexPage() {
   const drinks = useAppStore((state) => state.drinks)
   const hasDrinks = useMemo(() => drinks.drinks.length, [drinks])
@@ -14,9 +14,7 @@ export default function indexPage() {
           ))}
         </div>
       ) : (
-        <p className='my-10 text-center text-2xl'>
-          No hay resultados aún, utiliza el formulario para buscar recetas!
-        </p>
+        <p className='my-10 text-center text-2xl'>No hay resultados aún, utiliza el formulario para buscar recetas!</p>
       )}
     </>
   )
